@@ -2,10 +2,18 @@ import Input from "./Input";
 import Button from "./Button";
 
 function Product(props) {
-  const { count, handlerPlus, handlerMinus, handlerResetCount } = props;
+  const {
+    count,
+    handlerPlus,
+    handlerMinus,
+    handlerResetCount,
+    price,
+    discount,
+  } = props;
 
   return (
     <>
+      {/* Start of Counter */}
       <div className="w-96 h-auto card bg-stone-100 shadow-xl rounded-lg p-6 mb-20">
         <div className="text-center">
           <h1>Counter</h1>
@@ -28,7 +36,26 @@ function Product(props) {
             buttonFunc={handlerPlus}
           />
         </div>
-        <h1>Product Input</h1>
+      </div>
+      {/* End of Counter */}
+
+      {/* Start of Price and Discount */}
+      <div className="w-96 h-auto card bg-stone-100 shadow-xl rounded-lg p-6 mb-20">
+        <div className="text-center">
+          <h1>Price</h1>
+          <h1 className="text-5xl font-extrabold text-gray-700 p-5">
+            ${price}
+          </h1>
+          <h1 className="text-3xl font-extrabold text-gray-700 p-5">
+            % {discount}
+          </h1>
+        </div>
+      </div>
+      {/* End of Price and Discount */}
+      <div className="w-96 h-auto card bg-stone-100 shadow-xl rounded-lg p-6 mb-20">
+        <div className="text-center">
+          <h1>Product Input</h1>
+        </div>
         <Input />
       </div>
     </>
