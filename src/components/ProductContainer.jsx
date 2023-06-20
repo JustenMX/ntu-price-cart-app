@@ -69,7 +69,7 @@ function ProductContainer() {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center h-screen bg-stone-100">
+      <div className="flex flex-col justify-center items-center h-screen bg-stone-200">
         <div className="flex flex-row justify-center items-center">
           <Product
             count={count}
@@ -86,8 +86,8 @@ function ProductContainer() {
         </div>
         <div className="flex justify-center items-center mt-8">
           <div className="w-auto h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">
-            <div className="text-center">
-              <h1>View List</h1>
+            <div className="text-center mb-2">
+              <h1>Product List</h1>
             </div>
 
             <ViewList list={list} />
