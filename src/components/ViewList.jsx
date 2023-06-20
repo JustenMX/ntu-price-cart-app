@@ -46,6 +46,12 @@ function ViewList(props) {
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-semibold text-slate-50"
                     >
+                      Discounted Amount
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-semibold text-slate-50"
+                    >
                       Total Cost
                     </th>
                   </tr>
@@ -66,7 +72,13 @@ function ViewList(props) {
                         {listItem.quantity}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
-                        {listItem.discount}
+                        % {listItem.discount}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                        $ {listItem.discountedAmount}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                        $ {listItem.total}
                       </td>
                     </tr>
                   ))}

@@ -13,6 +13,7 @@ function Input(props) {
   };
 
   const handlerChangePrice = (event) => {
+    // convert (value) string to integer
     inputPriceFunc(event.target.value);
   };
   return (
