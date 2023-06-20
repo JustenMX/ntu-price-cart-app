@@ -1,14 +1,62 @@
 //
 
-function Input() {
+function Input(props) {
+  const {
+    priceInputLabel,
+    productInputLabel,
+    inputProductFunc,
+    inputPriceFunc,
+  } = props;
+
+  const handlerChangeProductName = (event) => {
+    inputProductFunc(event.target.value);
+  };
+
+  const handlerChangePrice = (event) => {
+    inputPriceFunc(event.target.value);
+  };
   return (
     <>
-      <div>
+      {/* Product Input */}
+      <div className="mt-5">
         <label
-          htmlFor="card"
+          htmlFor="product-input"
           className="block text-sm text-gray-500 dark:text-gray-300"
         >
-          Card Number
+          Product Name
+        </label>
+
+        <div className="relative flex items-center mt-2">
+          <span className="absolute">
+            <svg
+              className="mx-3"
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 448 512"
+            >
+              <path d="M368 80c-3.2 0-6.2 .4-8.9 1.3C340 86.8 313 91.9 284.8 84.6C227.4 69.7 160.2 92 110.1 142.1S37.7 259.4 52.6 316.8c7.3 28.2 2.2 55.2-3.3 74.3c-.8 2.8-1.3 5.8-1.3 8.9c0 17.7 14.3 32 32 32c3.2 0 6.2-.4 8.9-1.3c19.1-5.5 46.1-10.7 74.3-3.3c57.4 14.9 124.6-7.4 174.7-57.5s72.4-117.3 57.5-174.7c-7.3-28.2-2.2-55.2 3.3-74.3c.8-2.8 1.3-5.8 1.3-8.9c0-17.7-14.3-32-32-32zm0-48c44.2 0 80 35.8 80 80c0 7.7-1.1 15.2-3.1 22.3c-4.6 15.8-7.1 32.9-3 48.9c20.1 77.6-10.9 161.5-70 220.7s-143.1 90.2-220.7 70c-16-4.1-33-1.6-48.9 3c-7.1 2-14.6 3.1-22.3 3.1c-44.2 0-80-35.8-80-80c0-7.7 1.1-15.2 3.1-22.3c4.6-15.8 7.1-32.9 3-48.9C-14 251.3 17 167.3 76.2 108.2S219.3 18 296.8 38.1c16 4.1 33 1.6 48.9-3c7.1-2 14.6-3.1 22.3-3.1zM246.7 167c-52 15.2-96.5 59.7-111.7 111.7c-3.7 12.7-17.1 20-29.8 16.3s-20-17.1-16.3-29.8c19.8-67.7 76.6-124.5 144.3-144.3c12.7-3.7 26.1 3.6 29.8 16.3s-3.6 26.1-16.3 29.8z" />
+            </svg>
+          </span>
+
+          <input
+            type="text"
+            placeholder={productInputLabel}
+            value={productInputLabel}
+            onChange={handlerChangeProductName}
+            className="block w-full py-2.5 text-gray-700 placeholder-gray-400/70 bg-white border border-gray-200 rounded-lg pl-11 pr-5 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+          />
+          {/* <p className="mt-3 text-xs text-gray-400 dark:text-gray-600">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p> */}
+        </div>
+      </div>
+      {/* Price Input */}
+      <div className="mt-5 mb-5">
+        <label
+          htmlFor="price-input"
+          className="block text-sm text-gray-500 dark:text-gray-300"
+        >
+          Price
         </label>
 
         <div className="relative flex items-center mt-2">
@@ -24,17 +72,21 @@ function Input() {
           </span>
 
           <input
-            type="text"
-            placeholder="2.99"
+            type="number"
+            placeholder={priceInputLabel}
+            value={priceInputLabel}
+            onChange={handlerChangePrice}
             className="block w-full py-2.5 text-gray-700 placeholder-gray-400/70 bg-white border border-gray-200 rounded-lg pl-11 pr-5 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
           />
-          <p className="mt-3 text-xs text-gray-400 dark:text-gray-600">
+          {/* <p className="mt-3 text-xs text-gray-400 dark:text-gray-600">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
+          </p> */}
         </div>
       </div>
     </>
   );
 }
+
+// Props Validation
 
 export default Input;

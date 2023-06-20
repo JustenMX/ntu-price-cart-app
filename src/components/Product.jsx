@@ -9,6 +9,9 @@ function Product(props) {
     handlerResetCount,
     price,
     discount,
+    productName,
+    handlerChangeProductName,
+    handlerChangePrice,
   } = props;
 
   return (
@@ -42,7 +45,10 @@ function Product(props) {
       {/* Start of Price and Discount */}
       <div className="w-96 h-auto card bg-stone-100 shadow-xl rounded-lg p-6 mb-20">
         <div className="text-center">
-          <h1>Price</h1>
+          <h1>Product</h1>
+          <h1 className="text-5xl font-extrabold text-gray-700 p-5">
+            {productName}
+          </h1>
           <h1 className="text-5xl font-extrabold text-gray-700 p-5">
             ${price}
           </h1>
@@ -56,7 +62,17 @@ function Product(props) {
         <div className="text-center">
           <h1>Product Input</h1>
         </div>
-        <Input />
+        <Input
+          productInputLabel={productName}
+          priceInputLabel={price}
+          inputProductFunc={handlerChangeProductName}
+          inputPriceFunc={handlerChangePrice}
+        />
+        <Button
+          buttonCSS="btn btn-primary"
+          buttonLabel="SUBMIT PRODUCT"
+          buttonFunc={handlerPlus}
+        />
       </div>
     </>
   );

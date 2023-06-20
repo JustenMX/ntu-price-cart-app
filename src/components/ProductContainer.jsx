@@ -7,6 +7,7 @@ function ProductContainer() {
   const [count, setCount] = useState(0);
   const [price, setPrice] = useState(2.99);
   const [discount, setDiscount] = useState(0);
+  const [productName, setProductName] = useState("Banana");
 
   // Handler for Count Increment
   const handlerPlus = () => {
@@ -38,6 +39,19 @@ function ProductContainer() {
     setCount(0);
   };
 
+  // Handler for OnChange event
+  const handlerChangeProductName = (value) => {
+    setProductName(value);
+  };
+
+  const handlerChangePrice = (value) => {
+    if (value <= 0) {
+      setPrice(0);
+    } else {
+      setPrice(value);
+    }
+  };
+
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-stone-100">
       <Product
@@ -47,6 +61,9 @@ function ProductContainer() {
         handlerResetCount={handlerResetCount}
         price={price}
         discount={discount}
+        productName={productName}
+        handlerChangeProductName={handlerChangeProductName}
+        handlerChangePrice={handlerChangePrice}
       />
       <ViewList />
     </div>
