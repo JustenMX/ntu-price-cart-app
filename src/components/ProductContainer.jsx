@@ -8,6 +8,7 @@ function ProductContainer() {
   const [price, setPrice] = useState(2.99);
   const [discount, setDiscount] = useState(0);
   const [productName, setProductName] = useState("Banana");
+  const [list, setList] = useState([]);
 
   // Handler for Count Increment
   const handlerPlus = () => {
@@ -52,21 +53,48 @@ function ProductContainer() {
     }
   };
 
+  // Handler for Input Submit
+  const handlerInputSubmit = () => {
+    const submittedProduct = {
+      id: list.length + 1, // Auto-generating count
+      name: productName,
+      price: price,
+      quantity: count,
+      discount: discount,
+    };
+    const updatedList = [...list, submittedProduct];
+    setList(updatedList);
+    console.log(list);
+  };
+
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-stone-100">
-      <Product
-        count={count}
-        handlerPlus={handlerPlus}
-        handlerMinus={handlerMinus}
-        handlerResetCount={handlerResetCount}
-        price={price}
-        discount={discount}
-        productName={productName}
-        handlerChangeProductName={handlerChangeProductName}
-        handlerChangePrice={handlerChangePrice}
-      />
-      <ViewList />
-    </div>
+    <>
+      <div className="flex flex-col justify-center items-center h-screen bg-stone-100">
+        <div className="flex flex-row justify-center items-center">
+          <Product
+            count={count}
+            handlerPlus={handlerPlus}
+            handlerMinus={handlerMinus}
+            handlerResetCount={handlerResetCount}
+            price={price}
+            discount={discount}
+            productName={productName}
+            handlerChangeProductName={handlerChangeProductName}
+            handlerChangePrice={handlerChangePrice}
+            handlerInputSubmit={handlerInputSubmit}
+          />
+        </div>
+        <div className="flex justify-center items-center mt-8">
+          <div className="w-auto h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">
+            <div className="text-center">
+              <h1>View List</h1>
+            </div>
+
+            <ViewList list={list} />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
 

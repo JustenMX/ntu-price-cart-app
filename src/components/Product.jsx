@@ -12,12 +12,13 @@ function Product(props) {
     productName,
     handlerChangeProductName,
     handlerChangePrice,
+    handlerInputSubmit,
   } = props;
 
   return (
     <>
       {/* Start of Counter */}
-      <div className="w-96 h-auto card bg-stone-100 shadow-xl rounded-lg p-6 mb-20">
+      <div className="w-96 h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">
         <div className="text-center">
           <h1>Counter</h1>
           <h1 className="text-7xl font-extrabold text-gray-700 p-5">{count}</h1>
@@ -43,7 +44,7 @@ function Product(props) {
       {/* End of Counter */}
 
       {/* Start of Price and Discount */}
-      <div className="w-96 h-auto card bg-stone-100 shadow-xl rounded-lg p-6 mb-20">
+      <div className="w-96 h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">
         <div className="text-center">
           <h1>Product</h1>
           <h1 className="text-5xl font-extrabold text-gray-700 p-5">
@@ -58,7 +59,9 @@ function Product(props) {
         </div>
       </div>
       {/* End of Price and Discount */}
-      <div className="w-96 h-auto card bg-stone-100 shadow-xl rounded-lg p-6 mb-20">
+
+      {/* Start of Price and Product Input */}
+      <div className="w-96 h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">
         <div className="text-center">
           <h1>Product Input</h1>
         </div>
@@ -71,9 +74,12 @@ function Product(props) {
         <Button
           buttonCSS="btn btn-primary"
           buttonLabel="SUBMIT PRODUCT"
-          buttonFunc={handlerPlus}
+          buttonFunc={handlerInputSubmit}
         />
       </div>
+      {/* End of Price and Product Input */}
+
+      {/* Start of ViewList Table */}
     </>
   );
 }
