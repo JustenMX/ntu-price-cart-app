@@ -1,4 +1,4 @@
-//
+import PropTypes from "prop-types";
 function Button(props) {
   const { buttonLabel, buttonCSS, buttonFunc } = props;
   return (
@@ -11,5 +11,10 @@ function Button(props) {
 }
 
 // Props Validation
+Button.propTypes = {
+  buttonLabel: PropTypes.string.isRequired,
+  buttonCSS: PropTypes.string.isRequired,
+  buttonFunc: PropTypes.func.isRequired,
+};
 
 export default Button;
