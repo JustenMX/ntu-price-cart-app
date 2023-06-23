@@ -121,14 +121,18 @@ function ProductContainer() {
         <div className="flex flex-row justify-center items-center mt-8">
           <div className="w-auto h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">
             <div className="text-center mb-2">
-              <h1>Product List</h1>
+              <h1 className="underline decoration-4 decoration-indigo-500">
+                Product List
+              </h1>
             </div>
 
             <ViewList list={list} />
           </div>
           <div className="w-auto h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">
             <div className="text-center mb-2">
-              <h1>Stats</h1>
+              <h1 className="underline decoration-4 decoration-indigo-500">
+                Stats
+              </h1>
             </div>
 
             <Stats
