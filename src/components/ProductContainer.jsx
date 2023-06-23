@@ -9,6 +9,7 @@ function ProductContainer() {
   const [price, setPrice] = useState(2.99);
   const [discount, setDiscount] = useState(0);
   const [productName, setProductName] = useState("Banana");
+  //
   const [list, setList] = useState([]);
   const [stats, setStats] = useState({});
 
