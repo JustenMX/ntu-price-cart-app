@@ -1,4 +1,4 @@
-//
+import PropTypes from "prop-types";
 
 function Input(props) {
   const {
@@ -87,5 +87,11 @@ function Input(props) {
 }
 
 // Props Validation
+Input.propTypes = {
+  priceInputLabel: PropTypes.string.isRequired,
+  productInputLabel: PropTypes.string.isRequired,
+  inputProductFunc: PropTypes.func.isRequired,
+  inputPriceFunc: PropTypes.func.isRequired,
+};
 
 export default Input;
