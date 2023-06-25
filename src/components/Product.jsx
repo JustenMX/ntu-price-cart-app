@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Input from "./Input";
 import Button from "./Button";
 
@@ -84,8 +85,6 @@ function Product(props) {
         />
       </div>
       {/* End of Price and Product Input */}
-
-      {/* Start of ViewList Table */}
     </>
   );
 }
