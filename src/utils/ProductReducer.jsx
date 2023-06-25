@@ -1,4 +1,4 @@
-import initialProduct from "../store/InitialProduct";
+import initialProduct from "../store/initialProduct";
 
 // Reducer Function
 export function ProductReducer(state = initialProduct, action) {
@@ -9,7 +9,7 @@ export function ProductReducer(state = initialProduct, action) {
     case "COUNT_INCREMENT": {
       let newState = { ...state };
       newState.count = state.count + 1;
-      if (newState >= 5) {
+      if (newState.count >= 5) {
         newState.discount = 20;
       }
       console.log(`Plus Count = ${newState}`);
@@ -22,15 +22,15 @@ export function ProductReducer(state = initialProduct, action) {
       if (newState.count < 5) {
         newState.discount = 0;
       }
-      if (newState.count <= 0) {
-        newState.count = 0;
+      if (newState.count <= 1) {
+        newState.count = 1;
       }
       return newState;
     }
     // Reset
     case "COUNT_RESET": {
       let newState = { ...state };
-      newState.count = 0;
+      newState.count = 1;
       return newState;
     }
     // Product Name
@@ -46,3 +46,5 @@ export function ProductReducer(state = initialProduct, action) {
     }
   }
 }
+
+export default ProductReducer;
