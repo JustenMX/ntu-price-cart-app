@@ -1,21 +1,12 @@
 /* eslint-disable react/prop-types */
 import Input from "./Input";
 import Button from "./Button";
+import { useContext } from "react";
+import ProductContext from "../contexts/ProductContext";
 
 function Product(props) {
-  const {
-    count,
-    handlerPlus,
-    handlerMinus,
-    handlerResetCount,
-    price,
-    discount,
-    productName,
-    handlerChangeProductName,
-    handlerChangePrice,
-    handlerInputSubmit,
-  } = props;
-
+  const { handlerInputSubmit } = props;
+  const ctx = useContext(ProductContext);
   return (
     <>
       {/* Start of Counter */}
@@ -24,23 +15,25 @@ function Product(props) {
           <h1 className="underline decoration-4 decoration-indigo-500">
             Counter
           </h1>
-          <h1 className="text-7xl font-extrabold text-gray-700 p-5">{count}</h1>
+          <h1 className="text-7xl font-extrabold text-gray-700 p-5">
+            {ctx.count}
+          </h1>
         </div>
         <div className="flex justify-center space-x-4">
           <Button
             buttonCSS="btn btn-primary"
             buttonLabel="-"
-            buttonFunc={handlerMinus}
+            buttonFunc={ctx.handlerMinus}
           />
           <Button
             buttonCSS="btn btn-secondary"
             buttonLabel="RESET"
-            buttonFunc={handlerResetCount}
+            buttonFunc={ctx.handlerResetCount}
           />
           <Button
             buttonCSS="btn btn-primary"
             buttonLabel="+"
-            buttonFunc={handlerPlus}
+            buttonFunc={ctx.handlerPlus}
           />
         </div>
       </div>
@@ -53,13 +46,13 @@ function Product(props) {
             Product
           </h1>
           <h1 className="text-5xl font-extrabold text-gray-700 p-5">
-            {productName}
+            {ctx.productName}
           </h1>
           <h1 className="text-5xl font-extrabold text-gray-700 p-5">
-            ${price}
+            ${ctx.price}
           </h1>
           <h1 className="text-3xl font-extrabold text-gray-700 p-5">
-            % {discount}
+            % {ctx.discount}
           </h1>
         </div>
       </div>
@@ -73,10 +66,10 @@ function Product(props) {
           </h1>
         </div>
         <Input
-          productInputLabel={productName}
-          priceInputLabel={price}
-          inputProductFunc={handlerChangeProductName}
-          inputPriceFunc={handlerChangePrice}
+          productInputLabel={ctx.productName}
+          priceInputLabel={ctx.price}
+          inputProductFunc={ctx.handlerChangeProductName}
+          inputPriceFunc={ctx.handlerChangePrice}
         />
         <Button
           buttonCSS="btn btn-primary"

@@ -1,57 +1,30 @@
-import { useState, useEffect, useReducer } from "react";
-import ProductReducer from "../hooks/ProductReducer";
-import initialProduct from "../util/initialProduct";
+import { useState, useEffect, useContext } from "react";
+import ProductContext from "../contexts/ProductContext";
 //
 import Product from "./Product";
 import ViewList from "./ViewList";
 import Stats from "./Stats";
 
 function ProductContainer() {
-  // State Management
-  // useReducer
-  const [state, dispatch] = useReducer(ProductReducer, initialProduct);
+  // use Context object from ProductReducer
+  const ctx = useContext(ProductContext);
   // useState
   const [list, setList] = useState([]);
   const [stats, setStats] = useState({});
 
-  // Handler for Count Increment
-  const handlerPlus = () => {
-    dispatch({ type: "COUNT_INCREMENT" });
-  };
-
-  // Handler for Count Decrement
-  const handlerMinus = () => {
-    dispatch({ type: "COUNT_DECREMENT" });
-  };
-
-  // Handler for Count Reset
-  const handlerResetCount = () => {
-    dispatch({ type: "COUNT_RESET" });
-  };
-
-  // Handler for OnChange event
-  const handlerChangeProductName = (value) => {
-    dispatch({ type: "SET_PRODUCT_NAME", productName: value });
-  };
-
-  const handlerChangePrice = (value) => {
-    dispatch({ type: "SET_PRODUCT_PRICE", price: value });
-  };
-
   // Handler for Input Submit
   const handlerInputSubmit = () => {
     const totalCost =
-      Math.round(
-        state.price * state.count * (1.0 - state.discount / 100) * 100
-      ) / 100;
+      Math.round(ctx.price * ctx.count * (1.0 - ctx.discount / 100) * 100) /
+      100;
     const discountedAmount =
-      Math.round((state.price * state.count - totalCost) * 100) / 100;
+      Math.round((ctx.price * ctx.count - totalCost) * 100) / 100;
     const submittedProduct = {
       id: list.length + 1, // Auto-generating count
-      name: state.productName,
-      price: state.price,
-      quantity: state.count,
-      discount: state.discount,
+      name: ctx.productName,
+      price: ctx.price,
+      quantity: ctx.count,
+      discount: ctx.discount,
       discountedAmount: discountedAmount,
       total: totalCost,
     };
@@ -89,18 +62,7 @@ function ProductContainer() {
     <>
       <div className="flex flex-col justify-center items-center h-screen bg-stone-200">
         <div className="flex flex-row justify-center items-center">
-          <Product
-            count={state.count}
-            handlerPlus={handlerPlus}
-            handlerMinus={handlerMinus}
-            handlerResetCount={handlerResetCount}
-            price={state.price}
-            discount={state.discount}
-            productName={state.productName}
-            handlerChangeProductName={handlerChangeProductName}
-            handlerChangePrice={handlerChangePrice}
-            handlerInputSubmit={handlerInputSubmit}
-          />
+          <Product handlerInputSubmit={handlerInputSubmit} />
         </div>
         <div className="flex flex-row justify-center items-center mt-8">
           <div className="w-auto h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">
