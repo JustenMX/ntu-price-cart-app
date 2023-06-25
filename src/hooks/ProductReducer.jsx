@@ -1,4 +1,4 @@
-import initialProduct from "../store/initialProduct";
+import initialProduct from "../util/initialProduct";
 
 // Reducer Function
 export function ProductReducer(state = initialProduct, action) {

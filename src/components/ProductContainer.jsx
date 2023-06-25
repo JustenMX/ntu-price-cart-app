@@ -1,6 +1,6 @@
 import { useState, useEffect, useReducer } from "react";
-import ProductReducer from "../utils/ProductReducer";
-import initialProduct from "../store/initialProduct";
+import ProductReducer from "../hooks/ProductReducer";
+import initialProduct from "../util/initialProduct";
 //
 import Product from "./Product";
 import ViewList from "./ViewList";
