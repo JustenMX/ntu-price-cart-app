@@ -15,13 +15,14 @@ Create a new React Application and the application, perform the following tasks:
 - Show the total price for each item row, including discount
 - Show the sum total of all items in the table
 - Show and compare sum with discount savings, in actual $
-
-Some tips:
-
 - Keep all calculations (business logic) in the higher-order Product component
 - Update ViewList when adding new table columns
 - As much as possible, keep the container and presentational components separated
 
 Additonal implementations:
 
-- refactored the code using useReducer and useContext hooks
+- Refactored the code using useReducer and useContext hooks ([refactor-reducer-context-branch](https://github.com/JustenMX/ntu-price-cart-app/tree/a0af1b5637e6c812c1bf9528352c8a34c8ca629a "branch merge history"))
+
+Curently working on
+
+- Add CRUD application to ViewList Component
