@@ -21,3 +21,7 @@ Some tips:
 - Keep all calculations (business logic) in the higher-order Product component
 - Update ViewList when adding new table columns
 - As much as possible, keep the container and presentational components separated
+
+Additonal implementations:
+
+- refactored the code using useReducer and useContext hooks
