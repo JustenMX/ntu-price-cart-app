@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import ProductContext from "../contexts/ProductContext";
+import { v4 as uuidv4 } from "uuid";
 //
 import Product from "./Product";
 import ViewList from "./ViewList";
@@ -20,6 +21,7 @@ function ProductContainer() {
     const discountedAmount =
       Math.round((ctx.price * ctx.count - totalCost) * 100) / 100;
     const submittedProduct = {
+      uid: uuidv4(), // library used to generate uid
       id: list.length + 1, // Auto-generating count
       name: ctx.productName,
       price: ctx.price,
@@ -33,16 +35,33 @@ function ProductContainer() {
     console.log(list);
   };
 
+  // Handler for ListItem Delete
+  const handlerDeleteListItem = (uid) => {
+    const updatedList = list.filter((listItem) => listItem.uid !== uid);
+    const updatedListID = updatedList.map((item, index) => ({
+      ...item,
+      id: index + 1,
+    }));
+    setList(updatedListID);
+  };
+
+  // Handler for ListItem Edit
+  const handlerEditListItem = (uid) => {
+    console.log(`listItem ref List.uid: ${uid} edited`);
+  };
+
   // Calculate total expense whenever the list state changes
   useEffect(() => {
     // calculations with list state dependecy
     const expenseSum = list.reduce((accumulator, object) => {
       return accumulator + object.price * object.quantity;
     }, 0);
+    //
     const roundExpenseSum = Math.round(expenseSum * 100) / 100;
     const totalSum = list.reduce((accumulator, object) => {
       return accumulator + object.total;
     }, 0);
+    //
     const roundTotalSum = Math.round(totalSum * 100) / 100;
     const savings = Math.round((roundExpenseSum - roundTotalSum) * 100) / 100;
     // debugging
@@ -72,7 +91,11 @@ function ProductContainer() {
               </h1>
             </div>
 
-            <ViewList list={list} />
+            <ViewList
+              list={list}
+              handlerDeleteListItem={handlerDeleteListItem}
+              handlerEditListItem={handlerEditListItem}
+            />
           </div>
           <div className="w-auto h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">
             <div className="text-center mb-2">

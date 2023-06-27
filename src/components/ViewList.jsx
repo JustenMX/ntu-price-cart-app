@@ -2,7 +2,7 @@
 //
 
 function ViewList(props) {
-  const { list } = props;
+  const { list, handlerDeleteListItem, handlerEditListItem } = props;
   return (
     <>
       <div className="flex flex-col">
@@ -54,11 +54,23 @@ function ViewList(props) {
                     >
                       Total Cost
                     </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-semibold text-slate-50"
+                    >
+                      Edit
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-semibold text-slate-50"
+                    >
+                      Delete
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                   {list.map((listItem) => (
-                    <tr key={listItem.id}>
+                    <tr key={listItem.uid}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
                         {listItem.id}
                       </td>
@@ -79,6 +91,18 @@ function ViewList(props) {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
                         $ {listItem.total}
+                      </td>
+                      <td
+                        className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"
+                        onClick={() => handlerEditListItem(listItem.uid)}
+                      >
+                        🔧
+                      </td>
+                      <td
+                        className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"
+                        onClick={() => handlerDeleteListItem(listItem.uid)}
+                      >
+                        ❌
                       </td>
                     </tr>
                   ))}
