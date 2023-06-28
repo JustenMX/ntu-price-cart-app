@@ -31,12 +31,7 @@ function Input(props) {
 
         <div className="relative flex items-center mt-2">
           <span className="absolute">
-            <svg
-              className="mx-3"
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 448 512"
-            >
+            <svg className="mx-3" height="1em" viewBox="0 0 448 512">
               <FontAwesomeIcon icon={faLemon} />
             </svg>
           </span>
@@ -63,12 +58,7 @@ function Input(props) {
 
         <div className="relative flex items-center mt-2">
           <span className="absolute">
-            <svg
-              className="mx-3"
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 320 512"
-            >
+            <svg className="mx-3" height="1em" viewBox="0 0 320 512">
               <FontAwesomeIcon icon={faDollarSign} />
             </svg>
           </span>

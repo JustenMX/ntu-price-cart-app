@@ -13,7 +13,9 @@ function ProductContainer() {
   // useState
   const [list, setList] = useState([]);
   const [stats, setStats] = useState({});
-  const [editList, setEditList] = useState(true);
+  const [showEditList, setShowEditList] = useState(false);
+  const [editListItem, setEditListItem] = useState([{}]);
+  const [isEditingFlag, setIsEditingFlag] = useState(false);
 
   // Handler for Input Submit
   const handlerInputSubmit = () => {
@@ -49,7 +51,76 @@ function ProductContainer() {
 
   // Handler for ListItem Edit
   const handlerEditListItem = (uid) => {
-    console.log(`listItem ref List.uid: ${uid} edited`);
+    const editList = list.filter((listItem) => listItem.uid === uid);
+    setEditListItem(editList[0]);
+    setShowEditList(true);
+    setIsEditingFlag(true);
+  };
+
+  // Handler for EditList Input Changes
+  // EditList.name
+  const handlerOnChangeName = (value) => {
+    const updateName = {
+      ...editListItem,
+      name: value,
+    };
+    setEditListItem(updateName);
+  };
+
+  // EditList.price
+  const handlerOnChangePrice = (value) => {
+    const updatePrice = {
+      ...editListItem,
+      price: value,
+    };
+    setEditListItem(updatePrice);
+  };
+
+  // EditList.quantity
+  const handlerOnChangeQuantity = (value) => {
+    const updateQuantity = {
+      ...editListItem,
+      quantity: value,
+    };
+
+    setEditListItem(updateQuantity);
+  };
+
+  // EditList.discount
+  const handlerOnChangeDiscount = (value) => {
+    const updateDiscount = {
+      ...editListItem,
+      discount: value,
+    };
+    setEditListItem(updateDiscount);
+  };
+
+  console.log(editListItem);
+
+  // Handler for EditList Submit Button
+  const handlerSubmitEdit = () => {
+    const updatedList = list.map((item) => {
+      if (item.uid === editListItem.uid) {
+        return {
+          ...item,
+          name: editListItem.name,
+          price: editListItem.price,
+          quantity: editListItem.quantity,
+          discount: editListItem.discount,
+        };
+      }
+      return item;
+    });
+    setList(updatedList);
+    // setIsEditingFlag(false);
+    // setEditListItem([{}])
+    // setShowEditList(false);
+  };
+
+  // Handler for EditList Cancel Button
+  const handlerCancelEdit = () => {
+    setShowEditList(false);
+    setIsEditingFlag(false);
   };
 
   // Calculate total expense whenever the list state changes
@@ -99,17 +170,26 @@ function ProductContainer() {
               list={list}
               handlerDeleteListItem={handlerDeleteListItem}
               handlerEditListItem={handlerEditListItem}
+              isEditingFlag={isEditingFlag}
             />
           </div>
           {/* ViewList */}
           {/* EditList */}
-          {editList && (
+          {showEditList && (
             <div className="w-auto h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">
               <div className="text-center mb-2">
                 <h1 className="underline decoration-4 decoration-indigo-500">
-                  EditList
+                  Edit List
                 </h1>
-                <EditList />
+                <EditList
+                  editItemValue={editListItem}
+                  handlerOnChangeName={handlerOnChangeName}
+                  handlerOnChangePrice={handlerOnChangePrice}
+                  handlerOnChangeQuantity={handlerOnChangeQuantity}
+                  handlerOnChangeDiscount={handlerOnChangeDiscount}
+                  handlerCancelEdit={handlerCancelEdit}
+                  handlerSubmitEdit={handlerSubmitEdit}
+                />
               </div>
             </div>
           )}

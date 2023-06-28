@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
-//
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBan,
+  faCircleXmark,
+  faWrench,
+} from "@fortawesome/free-solid-svg-icons";
 
 function ViewList(props) {
-  const { list, handlerDeleteListItem, handlerEditListItem } = props;
+  const { list, handlerDeleteListItem, handlerEditListItem, isEditingFlag } =
+    props;
   return (
     <>
       <div className="flex flex-col">
@@ -97,17 +103,30 @@ function ViewList(props) {
                         onClick={() => handlerEditListItem(listItem.uid)}
                       >
                         <span className="cursor-pointer hover:animate-pulse">
-                          🔧
+                          <FontAwesomeIcon icon={faWrench} size="lg" />
                         </span>
                       </td>
-                      <td
-                        className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"
-                        onClick={() => handlerDeleteListItem(listItem.uid)}
-                      >
-                        <span className="cursor-pointer hover:animate-pulse">
-                          ❌
-                        </span>
-                      </td>
+
+                      {isEditingFlag ? (
+                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
+                          <span className="cursor-not-allowed">
+                            <FontAwesomeIcon icon={faBan} size="xl" />
+                          </span>
+                        </td>
+                      ) : (
+                        <td
+                          className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"
+                          onClick={() => handlerDeleteListItem(listItem.uid)}
+                        >
+                          <span className="cursor-pointer hover:animate-pulse">
+                            <FontAwesomeIcon
+                              icon={faCircleXmark}
+                              size="xl"
+                              style={{ color: "#b92d5d" }}
+                            />
+                          </span>
+                        </td>
+                      )}
                     </tr>
                   ))}
                 </tbody>
