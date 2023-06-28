@@ -65,6 +65,7 @@ function Product(props) {
             Product Input
           </h1>
         </div>
+
         <Input
           productInputLabel={ctx.productName}
           priceInputLabel={ctx.price}

@@ -96,13 +96,17 @@ function ViewList(props) {
                         className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"
                         onClick={() => handlerEditListItem(listItem.uid)}
                       >
-                        🔧
+                        <span className="cursor-pointer hover:animate-pulse">
+                          🔧
+                        </span>
                       </td>
                       <td
                         className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800"
                         onClick={() => handlerDeleteListItem(listItem.uid)}
                       >
-                        ❌
+                        <span className="cursor-pointer hover:animate-pulse">
+                          ❌
+                        </span>
                       </td>
                     </tr>
                   ))}

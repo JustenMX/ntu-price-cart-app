@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import Product from "./Product";
 import ViewList from "./ViewList";
 import Stats from "./Stats";
+import EditList from "./editList";
 
 function ProductContainer() {
   // use Context object from ProductReducer
@@ -12,6 +13,7 @@ function ProductContainer() {
   // useState
   const [list, setList] = useState([]);
   const [stats, setStats] = useState({});
+  const [editList, setEditList] = useState(true);
 
   // Handler for Input Submit
   const handlerInputSubmit = () => {
@@ -79,11 +81,13 @@ function ProductContainer() {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center h-screen bg-stone-200">
+      <div className="flex flex-col justify-center items-center bg-stone-200">
         <div className="flex flex-row justify-center items-center">
           <Product handlerInputSubmit={handlerInputSubmit} />
         </div>
+
         <div className="flex flex-row justify-center items-center mt-8">
+          {/* ViewList */}
           <div className="w-auto h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">
             <div className="text-center mb-2">
               <h1 className="underline decoration-4 decoration-indigo-500">
@@ -97,6 +101,21 @@ function ProductContainer() {
               handlerEditListItem={handlerEditListItem}
             />
           </div>
+          {/* ViewList */}
+          {/* EditList */}
+          {editList && (
+            <div className="w-auto h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">
+              <div className="text-center mb-2">
+                <h1 className="underline decoration-4 decoration-indigo-500">
+                  EditList
+                </h1>
+                <EditList />
+              </div>
+            </div>
+          )}
+          {/* EditList */}
+
+          {/* Stats */}
           <div className="w-auto h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">
             <div className="text-center mb-2">
               <h1 className="underline decoration-4 decoration-indigo-500">
@@ -110,6 +129,7 @@ function ProductContainer() {
               totalSavings={stats.savings}
             />
           </div>
+          {/* stats */}
         </div>
       </div>
     </>
