@@ -31,7 +31,7 @@ export function ProductProvider({ children }) {
   };
 
   const handlerChangePrice = (value) => {
-    dispatch({ type: "SET_PRODUCT_PRICE", price: value });
+    dispatch({ type: "SET_PRODUCT_PRICE", price: +value });
   };
 
   // create a context object that will be used by all components wrapped by the provider

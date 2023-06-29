@@ -99,6 +99,19 @@ function ProductContainer() {
 
   // Handler for EditList Submit Button
   const handlerSubmitEdit = () => {
+    // calculating updated TotalCost
+    const updatedTotalCost = Math.round(
+      editListItem.price *
+        editListItem.quantity *
+        (1.0 - editListItem.discount / 100) *
+        100
+    );
+    // calculating updated discoutedAmount
+    const updatedDiscountAmount =
+      Math.round(
+        (editListItem.price * editListItem.quantity - updatedTotalCost) * 100
+      ) / 100;
+    // map list state - conditional check - merge
     const updatedList = list.map((item) => {
       if (item.uid === editListItem.uid) {
         return {
@@ -107,6 +120,8 @@ function ProductContainer() {
           price: editListItem.price,
           quantity: editListItem.quantity,
           discount: editListItem.discount,
+          discountedAmount: updatedDiscountAmount,
+          total: updatedTotalCost,
         };
       }
       return item;

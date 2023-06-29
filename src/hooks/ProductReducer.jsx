@@ -39,7 +39,11 @@ export function ProductReducer(state = initialProduct, action) {
     }
     // Product Price
     case "SET_PRODUCT_PRICE": {
-      return { ...state, price: action.price };
+      let newState = { ...state };
+      if (newState.price <= 0) {
+        return { ...newState, price: 1 };
+      }
+      return { ...newState, price: action.price };
     }
     default: {
       throw new Error(`productReducer: unknown action ${action.type}`);
