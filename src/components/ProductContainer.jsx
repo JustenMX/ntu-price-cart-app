@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import Product from "./Product";
 import ViewList from "./ViewList";
 import Stats from "./Stats";
-import EditList from "./editList";
+import EditViewList from "./EditViewList";
 
 function ProductContainer() {
   // use Context object from ProductReducer
@@ -199,14 +199,14 @@ function ProductContainer() {
             />
           </div>
           {/* ViewList */}
-          {/* EditList */}
+          {/* EditViewList */}
           {showEditList && (
             <div className="w-auto h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">
               <div className="text-center mb-2">
                 <h1 className="underline decoration-4 decoration-indigo-500">
                   Edit List
                 </h1>
-                <EditList
+                <EditViewList
                   editItemValue={editListItem}
                   handlerOnChangeName={handlerOnChangeName}
                   handlerOnChangePrice={handlerOnChangePrice}
@@ -218,7 +218,7 @@ function ProductContainer() {
               </div>
             </div>
           )}
-          {/* EditList */}
+          {/* EditViewList */}
 
           {/* Stats */}
           <div className="w-auto h-auto card bg-stone-100 shadow-xl rounded-lg p-6 m-10">

@@ -8,7 +8,7 @@ import {
   faPercent,
 } from "@fortawesome/free-solid-svg-icons";
 
-function EditList(props) {
+function EditViewList(props) {
   const {
     editItemValue,
     handlerOnChangeName,
@@ -164,4 +164,4 @@ function EditList(props) {
   );
 }
 
-export default EditList;
+export default EditViewList;
