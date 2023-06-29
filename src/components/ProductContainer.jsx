@@ -57,6 +57,8 @@ function ProductContainer() {
     setIsEditingFlag(true);
   };
 
+  console.log(editListItem);
+
   // Handler for EditList Input Changes
   // EditList.name
   const handlerOnChangeName = (value) => {
@@ -71,7 +73,7 @@ function ProductContainer() {
   const handlerOnChangePrice = (value) => {
     const updatePrice = {
       ...editListItem,
-      price: value,
+      price: +value,
     };
     setEditListItem(updatePrice);
   };
@@ -80,7 +82,7 @@ function ProductContainer() {
   const handlerOnChangeQuantity = (value) => {
     const updateQuantity = {
       ...editListItem,
-      quantity: value,
+      quantity: +value,
     };
 
     setEditListItem(updateQuantity);
@@ -90,7 +92,7 @@ function ProductContainer() {
   const handlerOnChangeDiscount = (value) => {
     const updateDiscount = {
       ...editListItem,
-      discount: value,
+      discount: +value,
     };
     setEditListItem(updateDiscount);
   };
@@ -99,18 +101,26 @@ function ProductContainer() {
 
   // Handler for EditList Submit Button
   const handlerSubmitEdit = () => {
+    //reset current calculated values
+    const resetCalc = {
+      discountedAmount: 0,
+      total: 0,
+    };
     // calculating updated TotalCost
-    const updatedTotalCost = Math.round(
-      editListItem.price *
-        editListItem.quantity *
-        (1.0 - editListItem.discount / 100) *
-        100
-    );
+    const updatedTotalCost =
+      Math.round(
+        editListItem.price *
+          editListItem.quantity *
+          (1.0 - editListItem.discount / 100) *
+          100
+      ) / 100;
+    console.log(`updatedDiscountAmount = ${updatedTotalCost}`);
     // calculating updated discoutedAmount
     const updatedDiscountAmount =
       Math.round(
         (editListItem.price * editListItem.quantity - updatedTotalCost) * 100
       ) / 100;
+    console.log(`updatedDiscountAmount = ${updatedDiscountAmount}`);
     // map list state - conditional check - merge
     const updatedList = list.map((item) => {
       if (item.uid === editListItem.uid) {
@@ -120,8 +130,8 @@ function ProductContainer() {
           price: editListItem.price,
           quantity: editListItem.quantity,
           discount: editListItem.discount,
-          discountedAmount: updatedDiscountAmount,
-          total: updatedTotalCost,
+          discountedAmount: resetCalc.discountedAmount + updatedDiscountAmount,
+          total: resetCalc.total + updatedTotalCost,
         };
       }
       return item;
