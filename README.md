@@ -4,9 +4,9 @@
 
 ---
 
-### Assignment Brief:
+### Project Brief:
 
-Create a new React Application and the application, perform the following tasks:
+Create a React Application and the application, perform the following tasks:
 
 - Counter component to keep track of increment, decrement and reset
 - Price compomnent to keep track of Product Name and Price
@@ -21,5 +21,12 @@ Create a new React Application and the application, perform the following tasks:
 
 Additonal implementations:
 
-- Refactored the code using useReducer and useContext hooks ([refactor-reducer-context-branch](https://github.com/JustenMX/ntu-price-cart-app/tree/a0af1b5637e6c812c1bf9528352c8a34c8ca629a "branch merge history"))
-- Add CRUD application to ViewList Component - ([crud-viewList-branch](https://github.com/JustenMX/ntu-price-cart-app/tree/crud-viewList-branch))
+- Stats dashboard that takes in the accumulative values from the table and calculates `Total Expenses`, `Total Nett` and `Total Savings`
+- Refactored the code using `useReducer` and `useContext` hooks ([refactor-reducer-context-branch](https://github.com/JustenMX/ntu-price-cart-app/tree/a0af1b5637e6c812c1bf9528352c8a34c8ca629a "branch merge history"))
+- Add CRUD application to ViewList Component ([crud-viewList-branch](https://github.com/JustenMX/ntu-price-cart-app/tree/crud-viewList-branch))
+
+---
+
+Currently Working on:
+
+- Further refactoring of the rest of the states and props
