@@ -2,7 +2,15 @@
 
 ## Module 2.5 / 2.6 / 2.7 Assignment
 
----
+### useState, useReducer, useContext, props
+
+React application that demonstrates the use of various React hooks and concepts, such as useState, useReducer, useContext, and props. The project consists of multiple components that together create a dynamic and interactive user experience.
+
+The Counter component allows users to increment, decrement, and reset a counter value. The Price component manages product names and prices, while also implementing discount logic. The ViewList component displays a table of products, including their total price, and provides the ability to add new table columns.
+
+The project emphasizes the separation of container and presentational components, ensuring a clean and modular code structure. The higher-order Product component handles business logic and calculations, while other components consume and display the data.
+
+Additionally, the project offers additional implementations, such as a stats dashboard that calculates total expenses, total net, and total savings based on accumulated values from the table. There is also a refactored version of the code using useReducer and useContext hooks, as well as a CRUD application for the ViewList component.
 
 ### Project Brief:
 
